@@ -1,5 +1,5 @@
 import React from 'react';
-import ApolloProviderWrapper from './ApolloClient';
+import ApolloProviderWrapper from './apollo';
 import Items from './components/Items';
 
 const App = () => (
