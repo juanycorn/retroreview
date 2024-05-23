@@ -11,3 +11,23 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.parallax-bg {
+  background-image: url('/public/assets/background.webp');
+  height: 100%;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.content {
+  min-height: 100vh;
+  padding: 20px;
+}
