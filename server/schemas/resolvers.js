@@ -1,6 +1,6 @@
-const { query } = require("express");
+
 const {Save, User} = require("../models");
-const { Query } = require("mongoose");
+const { signToken, AuthenticationError } = require('../utils/auth');
 //const { signToken, AuthenticationError } = require('../utils/auth'); to be implemented
 
 const resolvers = {
@@ -9,7 +9,7 @@ const resolvers = {
 
         // findbyPk the save 
     },
-    Mutatuoin: {
+    Mutation: {
         // create User returns a token
 
         // updateUser reqcontext
