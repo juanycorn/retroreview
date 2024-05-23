@@ -9,7 +9,7 @@ const saveSchema = new Schema({
   }
 });
 
-// Set up pre-save middleware to create password
+
 const Save = mongoose.model('Save', saveSchema);
 
 module.exports = Save;
