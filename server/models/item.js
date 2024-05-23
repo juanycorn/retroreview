@@ -1,5 +1,7 @@
+//Required Files
 const mongoose = require('mongoose');
 
+//Items
 const itemSchema = new mongoose.Schema({
   name: {
     type: String,
