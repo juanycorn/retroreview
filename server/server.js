@@ -3,10 +3,15 @@ const express = require('express');
 const { graphqlHTTP } = require('express-graphql');
 const mongoose = require('mongoose');
 const { buildSchema } = require('graphql');
+const itemRoutes = require('./routes/itemRoutes');
 require('dotenv').config();
+const path = require('path');
 
 const app = express();
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 3003;
+
+//Middleware
+app.use(express.json());
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -38,6 +43,22 @@ app.use('/graphql', graphqlHTTP({
   rootValue: root,
   graphiql: true,
 }));
+
+// Serve static files for EmulatorJS
+app.use('/emulatorjs', express.static(path.join(__dirname, 'path-to-emulatorjs')));
+
+// Route to serve the EmulatorJS interface
+app.get('/emulator', (req, res) => {
+  res.sendFile(path.join(__dirname, 'path-to-emulatorjs', 'index.html'));
+});
+
+// Connect to MongoDB
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log('Connected to MongoDB'))
+  .catch(err => console.error('MongoDB connection error:', err));
+
+// Routes
+app.use('/api', itemRoutes);
 
 // Start the server
 app.listen(port, () => {
