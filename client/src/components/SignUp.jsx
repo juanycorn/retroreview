@@ -1,7 +1,7 @@
 import React from 'react';
-import { Button, Form, Grid, Header, Segment, Message } from 'semantic-ui-react';
+import { Button, Form, Grid, Header, Segment } from 'semantic-ui-react';
 
-const Login = () => {
+const SignUp = () => {
   return (
     <Grid
       textAlign="center"
@@ -10,7 +10,7 @@ const Login = () => {
     >
       <Grid.Column style={{ maxWidth: 450 }}>
         <Header as="h2" color="teal" textAlign="center">
-          Log-in to your account
+          Sign Up
         </Header>
         <Form size="large">
           <Segment stacked>
@@ -18,7 +18,14 @@ const Login = () => {
               fluid
               icon="user"
               iconPosition="left"
+              placeholder="Full Name"
+            />
+            <Form.Input
+              fluid
+              icon="mail"
+              iconPosition="left"
               placeholder="E-mail address"
+              type="email"
             />
             <Form.Input
               fluid
@@ -27,19 +34,14 @@ const Login = () => {
               placeholder="Password"
               type="password"
             />
-
             <Button color="teal" fluid size="large">
-              Login
+              Sign Up
             </Button>
           </Segment>
         </Form>
-        <Message>
-          New to us? <a href="/signup">Sign Up</a>
-        </Message>
       </Grid.Column>
     </Grid>
   );
 };
 
-export default Login;
-
+export default SignUp;
