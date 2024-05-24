@@ -1,0 +1,21 @@
+/* LandingPage.css */
+
+.landing-page {
+  position: relative;
+}
+
+.welcome-container {
+  padding: 100px;
+  text-align: center;
+  background-image: url('/public/assets/welcome-background.webp'); /* Add your image path */
+  background-size: cover; /* Make the background cover the container */
+  color: white; /* White text color */
+  border-radius: 20px;
+  margin-bottom: 20px; /* Add some space between the containers */
+}
+
+.carousel-container {
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent white background */
+  border-radius: 10px;
+}
