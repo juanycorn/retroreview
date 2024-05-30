@@ -9,6 +9,8 @@ import Login from './components/Login';
 import Games from './components/Games';
 import SignUp from './components/SignUp';
 import LandingPage from './components/Landingpage';
+import GameDetail from './components/GameDetail';
+import GameCarousel from './components/GameCarousel';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './index.css';
@@ -18,16 +20,18 @@ import './components/Footer.css';
 const App = () => (
   <ApolloProviderWrapper>
     <Router>
-      <div className="parallax-bg">
+      <div className="app-container">
         <Header />
-        <main className='content' style={{ padding: '20px', flex: '1' }}>
+        <main className="content">
           <Routes>
-            <Route path="/" element={<LandingPage/>} />
+            <Route path="/" element={<LandingPage />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path='/login' element={<Login />} />
-            <Route path='/signup' element={<SignUp />} />
-            <Route path='/games' element={<Games />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/games" element={<Games />} />
+            <Route path="/games/:slug" element={<GameDetail />} />
+            <Route path="/carousel" element={<GameCarousel />} />
           </Routes>
         </main>
         <Footer />

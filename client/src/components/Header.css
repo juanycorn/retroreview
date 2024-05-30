@@ -1,9 +1,21 @@
+/* Header.css */
+
 .header-menu {
-    margin-bottom: 20px;
-  }
-  
-  .logo {
-    font-size: 1.5em;
-    color: #61dafb;
-  }
-  
+  padding: 0;
+}
+
+.logo-item {
+  padding: 0;
+}
+
+.logo-item img.retrocade-logo {
+  max-height: 80px; /* Set a max-height for the logo */
+  width: auto; /* Maintain aspect ratio */
+  margin-right: 20px; /* Add some right margin to create space */
+}
+
+.menu-item {
+  padding: 0 15px;
+  display: flex;
+  align-items: center;
+}

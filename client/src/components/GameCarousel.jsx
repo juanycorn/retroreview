@@ -1,7 +1,7 @@
 import React from 'react';
 import Slider from 'react-slick';
 import { Link } from 'react-router-dom';
-import './GameCarousel.css'; // Custom CSS for additional styling
+import './GameCarousel.css';
 
 const GameCarousel = ({ games }) => {
   const settings = {
@@ -19,7 +19,7 @@ const GameCarousel = ({ games }) => {
     <Slider {...settings} className="carousel-container">
       {games.map(game => (
         <div key={game.id} className="carousel-item">
-          <Link to={`/games/${game.id}`}>
+          <Link to={`/games/${game.slug}`}>
             <img src={game.imageUrl} alt={game.name} className="carousel-image" />
             <h3 className="carousel-caption">{game.name}</h3>
           </Link>
@@ -30,5 +30,3 @@ const GameCarousel = ({ games }) => {
 };
 
 export default GameCarousel;
-
-

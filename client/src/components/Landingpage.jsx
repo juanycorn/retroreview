@@ -1,21 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Header, Container } from 'semantic-ui-react';
+import axios from 'axios';
 import GameCarousel from './GameCarousel';
-import './LandingPage.css'; // Import your CSS file for custom styling
+import './LandingPage.css';
 
 const LandingPage = () => {
-  const popularGames = [
-    {
-      id: 1,
-      name: 'Donkey Kong',
-      imageUrl: '/assets/Donkeykong-Banner.png',
-    },
-    {
-      id: 2,
-      name: 'Pac-Man',
-      imageUrl: '/assets/pacman-banner.jpg',
-    },
-  ];
+  const [popularGames, setPopularGames] = useState([]);
+
+  useEffect(() => {
+    const fetchPopularGames = async () => {
+      try {
+        const response = await axios.get(
+          'https://api.rawg.io/api/games?key=9f4cf210f2d444348491d5c9b6de68b3&page_size=5&ordering=-added'
+        );
+        const games = response.data.results.map(game => ({
+          id: game.id,
+          name: game.name,
+          imageUrl: game.background_image,
+        }));
+        setPopularGames(games);
+      } catch (error) {
+        console.error('Error fetching popular games:', error);
+      }
+    };
+
+    fetchPopularGames();
+  }, []);
 
   return (
     <div className="landing-page">
