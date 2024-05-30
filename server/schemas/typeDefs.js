@@ -1,9 +1,15 @@
 const typeDefs = `
-  type Save {
+  type Review {
     _id: ID
-    data: String
+    author: String
+    content: String
+    DatePosted: String
   }
-  
+  type Game {
+    _id: ID
+    title: String
+    review: [Review]
+  }
   type User {
     _id: ID
     userName: String
@@ -11,12 +17,14 @@ const typeDefs = `
     review: [Review]
   }
 
-  type: Auth {
+  type Auth {
     token: ID
     user: User
   }
   type Query { 
     user: User
+    game: Game
+    games: [Game]
     reviews: [Review]!
   }
 
@@ -26,13 +34,19 @@ const typeDefs = `
         email: String!
         password: String!
     ): Auth
+    addGame(
+      title: String!
+    ): Game
     updateUser(
         firstName: String
         lastName: String
         email: String
         password: String
       ): User
+
     postReview(author: String!, content: String!): Review
+
     login(email: String!, password: String!): Auth
   }
-  `
+  `;
+  module.exports = typeDefs;

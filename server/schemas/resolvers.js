@@ -1,5 +1,5 @@
 
-const {Review, User} = require("../models");
+const {Review, User} = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
@@ -28,6 +28,12 @@ const resolvers = {
       
     //         throw AuthenticationError;
     //       },
+        game: async (parent, {gameId}) => {
+          return Game.findOne({ _id: gameId });
+        },
+        games: async () => {
+          return Game.find();
+        },
         reviews: async () => {
           return Review.find().sort({datePosted: -1});
         },
@@ -68,6 +74,9 @@ const resolvers = {
           return review
           }throw AuthenticationError;
         },
+        addGame: async (parent, args) => {
+          return Game.create(args);
+      },
         //login returns a token
         login: async (parent, { email, password }) => {
             const user = await User.findOne({ email });
@@ -88,3 +97,5 @@ const resolvers = {
           },
     }
 }
+
+module.exports = resolvers;

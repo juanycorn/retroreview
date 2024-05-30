@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const review = require('./Review');
+const Review = require('./Review');
 const { Schema } = mongoose;
 
 
@@ -7,7 +7,12 @@ const gameSchema = new Schema({
   title: {
     type: String
   },
-  reviews: [review]
+  reviews: [
+    {
+     type: Schema.Types.ObjectId,
+     ref: 'Review'
+    }
+  ]
 });
 
 
