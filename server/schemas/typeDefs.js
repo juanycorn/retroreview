@@ -25,7 +25,7 @@ const typeDefs = `
     user: User
     game: Game
     games: [Game]
-    reviews: [Review]!
+    reviews: [Review]
   }
 
   type Mutation {

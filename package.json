@@ -4,7 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server --ignore client",
+    "develop": "concurrently \"cd server && npm run start\" \"cd client && npm run dev\"",
+    "install": "cd server && npm i && cd ../client && npm i",
+    "seed": "cd server && npm run seed",
+    "build": "cd client && npm run build"
   },
   "keywords": [],
   "author": "",
@@ -16,5 +21,8 @@
     "express-graphql": "^0.12.0",
     "graphql": "^15.8.0",
     "mongoose": "^8.4.0"
+  },
+  "devDependencies": {
+    "concurrently": "^5.1.0"
   }
 }

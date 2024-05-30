@@ -1,5 +1,5 @@
 
-const {Review, User} = require('../models');
+const {Review, User, Game} = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
@@ -8,11 +8,9 @@ const resolvers = {
         user: async (parent, args, context) => {
             if (context.user) {
               const user = await User.findById(context.user.id).populate({
-                path: 'orders.products',
-                populate: 'category',
+                path: 'reviews',
+                populate: 'review',
               });
-      
-              user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
       
               return user;
             }
@@ -29,7 +27,10 @@ const resolvers = {
     //         throw AuthenticationError;
     //       },
         game: async (parent, {gameId}) => {
-          return Game.findOne({ _id: gameId });
+          return Game.findById({ _id: gameId }).populate({
+            path: 'reviews',
+            populate: 'review',
+          });;
         },
         games: async () => {
           return Game.find();
