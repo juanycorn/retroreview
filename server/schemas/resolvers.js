@@ -1,5 +1,5 @@
 
-const {Save, User} = require("../models");
+const {Review, User} = require("../models");
 const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
@@ -19,16 +19,20 @@ const resolvers = {
             throw AuthenticationError;
         },
         // findbyPk the save 
-        save: async (parent, { id }, context) => {
-            if (context.user) {
-              const save = await Save.findById(id);
+    //     save: async (parent, { id }, context) => {
+    //         if (context.user) {
+    //           const save = await Save.findById(id);
       
-              return save.data;
-            }
+    //           return save.data;
+    //         }
       
-            throw AuthenticationError;
-          },
-    },
+    //         throw AuthenticationError;
+    //       },
+        reviews: async () => {
+          return Review.find().sort({datePosted: -1});
+        },
+
+     },
     Mutation: {
         // create User returns a token
         addUser: async (parent, args) => {
@@ -47,11 +51,22 @@ const resolvers = {
       
             throw AuthenticationError;
           },
-        // create a Save
-        addSave: async (parent, args) => {
-            const save = await Save.create(args);
-      
-            return save;
+        postReview: async (parent, {content, gameId}, context) => {
+          if (context.user) {
+          const review = await Review.create({author: context.user.username, content})
+
+          await Game.findOneAndUpdate(
+            {_id: gameId}, 
+            {
+              $addToSet: {reviews: review}
+            },
+            {
+              new: true,
+              runValidators: true,
+            }
+          )
+          return review
+          }throw AuthenticationError;
         },
         //login returns a token
         login: async (parent, { email, password }) => {

@@ -8,7 +8,7 @@ const typeDefs = `
     _id: ID
     userName: String
     email: String
-    storedSaves: [Save]
+    review: [Review]
   }
 
   type: Auth {
@@ -17,7 +17,7 @@ const typeDefs = `
   }
   type Query { 
     user: User
-    save(_id: ID!): Save
+    reviews: [Review]!
   }
 
   type Mutation {
@@ -32,7 +32,7 @@ const typeDefs = `
         email: String
         password: String
       ): User
-    addSave( data: String!): Save
+    postReview(author: String!, content: String!): Review
     login(email: String!, password: String!): Auth
   }
   `

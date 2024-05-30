@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const saveSchema = require('./Save');
+const review = require('./Review');
 const { Schema } = mongoose;
 const bcrypt = require('bcrypt');
 
@@ -19,7 +19,7 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
-  storedSaves: [saveSchema],
+  reviews: [review.schema]
 },
 {
     toJSON: {
