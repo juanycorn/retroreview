@@ -9,6 +9,7 @@ import Login from './components/Login';
 import Games from './components/Games';
 import SignUp from './components/SignUp';
 import LandingPage from './components/Landingpage';
+import DonkeyKong from './components/DonkeyKong';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './index.css';
@@ -28,6 +29,8 @@ const App = () => (
             <Route path='/login' element={<Login />} />
             <Route path='/signup' element={<SignUp />} />
             <Route path='/games' element={<Games />} />
+            <Route path="/games/donkey-kong" element={<DonkeyKong />} />
+
           </Routes>
         </main>
         <Footer />

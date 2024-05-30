@@ -1,26 +1,24 @@
-// src/components/Header.js
 import React from 'react';
-import { Menu, Container } from 'semantic-ui-react';
+import { Menu, Container, Image } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
-import './Header.css';
 
 const Header = () => {
   return (
-    <Menu inverted>
+    <Menu inverted className="header-menu">
       <Container>
-        <Menu.Item header as={Link} to="/" className="logo">
-          Retrocade
+        <Menu.Item as={Link} to="/" header>
+          <Image src="/assets/retrocade.png" alt="Retrocade Logo" size="medium" />
         </Menu.Item>
-        <Menu.Item as={Link} to="/Games" name="Games">
+        <Menu.Item as={Link} to="/Games" name="Games" className="menu-item">
           Games
         </Menu.Item>
-        <Menu.Item as={Link} to="/about" name="about">
+        <Menu.Item as={Link} to="/about" name="About" className="menu-item">
           About
         </Menu.Item>
-        <Menu.Item as={Link} to="/contact" name="contact">
+        <Menu.Item as={Link} to="/contact" name="Contact" className="menu-item">
           Contact
         </Menu.Item>
-        <Menu.Item as={Link} to="/login" name="login">
+        <Menu.Item as={Link} to="/login" name="Login" className="menu-item">
           Login
         </Menu.Item>
       </Container>
