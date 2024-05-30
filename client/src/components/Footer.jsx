@@ -4,7 +4,7 @@ import './Footer.css';
 
 const Footer = () => {
   return (
-    <Segment inverted vertical className="footer-segment"> {/* Add className */}
+    <Segment inverted vertical className="footer-segment" style={{ flexShrink: 0 }}> {/* Add style */}
       <Container textAlign='center'>
         <p>&copy; 2024 Retrocade. All rights reserved.</p>
         <List horizontal inverted divided link size='small'>

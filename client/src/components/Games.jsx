@@ -1,31 +1,44 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Grid, Header, Input, Segment } from 'semantic-ui-react';
+import { Grid, Header, Input, Segment, Button } from 'semantic-ui-react';
+import axios from 'axios';
 
 const Games = () => {
   const [searchTerm, setSearchTerm] = useState('');
+  const [games, setGames] = useState([]);
+  const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(false);
 
-  const games = [
-    {
-      name: 'Donkey Kong',
-      boxArt: './assets/donkeykong.jpg',
-      route: '/games/donkey-kong', // Define the route for Donkey Kong
-    },
-    {
-      name: 'Pac-Man',
-      boxArt: './assets/pacman.webp',
-      route: '/games/pac-man', // Define the route for Pac-Man
-    },
-    // Add more game objects as needed
-  ];
+  const fetchGames = async (search, page) => {
+    setLoading(true);
+    try {
+      const response = await axios.get(
+        `https://api.rawg.io/api/games?key=9f4cf210f2d444348491d5c9b6de68b3&page_size=40&page=${page}&search=${search}`
+      );
+      setGames((prevGames) => [...prevGames, ...response.data.results]);
+    } catch (error) {
+      console.error('Error fetching games:', error);
+    }
+    setLoading(false);
+  };
 
-  const filteredGames = games.filter(game =>
-    game.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  useEffect(() => {
+    fetchGames(searchTerm, page);
+  }, [searchTerm, page]);
+
+  const handleSearch = (e) => {
+    setSearchTerm(e.target.value);
+    setGames([]);
+    setPage(1);
+  };
+
+  const loadMoreGames = () => {
+    setPage((prevPage) => prevPage + 1);
+  };
 
   return (
-    <Grid textAlign="center" style={{ height: '100vh' }} verticalAlign="middle">
-      <Grid.Column style={{ maxWidth: 600 }}>
+    <Grid textAlign="center" style={{ minHeight: 'calc(100vh - 100px)' }} verticalAlign="middle">
+      <Grid.Column style={{ maxWidth: 1200 }}>
         <Header as="h2" color="teal" textAlign="center">
           Games
         </Header>
@@ -34,16 +47,16 @@ const Games = () => {
           icon="search"
           placeholder="Search for games..."
           value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
+          onChange={handleSearch}
         />
         <Segment textAlign="left" style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
-          <Grid columns={2}>
-            {filteredGames.map((game, index) => (
+          <Grid columns={5} doubling>
+            {games.map((game, index) => (
               <Grid.Column key={index}>
-                <Link to={game.route}> {/* Wrap the image with Link component */}
+                <Link to={`/games/${game.slug}`}>
                   <div style={{ position: 'relative' }}>
                     <img
-                      src={game.boxArt}
+                      src={game.background_image}
                       alt={game.name}
                       style={{
                         transition: 'transform 0.2s',
@@ -62,6 +75,10 @@ const Games = () => {
               </Grid.Column>
             ))}
           </Grid>
+          {loading && <p>Loading...</p>}
+          <Button fluid onClick={loadMoreGames} disabled={loading}>
+            Load More
+          </Button>
         </Segment>
       </Grid.Column>
     </Grid>
