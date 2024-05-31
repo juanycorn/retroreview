@@ -9,9 +9,9 @@
 }
 
 .logo-item img.retrocade-logo {
-  max-height: 80px; /* Set a max-height for the logo */
-  width: auto; /* Maintain aspect ratio */
-  margin-right: 20px; /* Add some right margin to create space */
+  max-height: 80px;
+  width: auto;
+  margin-right: 20px;
 }
 
 .menu-item {
