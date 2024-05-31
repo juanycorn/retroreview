@@ -10,6 +10,27 @@ const typeDefs = `
     title: String
     review: [Review]
   }
+  type Details {
+    id: ID
+    name: String
+    description: String
+    description_raw: String
+    background_image:String
+    released: String
+    rating: Float
+    platforms: [Platforms]
+    genres: [Genre]
+  }
+  type Platforms {
+    platform: Platform
+  }
+  type Platform {
+    name: String
+  }
+  
+  type Genre {
+    name: String
+  }
   type User {
     _id: ID
     userName: String
@@ -26,6 +47,7 @@ const typeDefs = `
     game: Game
     games: [Game]
     reviews: [Review]
+    gameDetails(slug: String!): Details
   }
 
   type Mutation {
@@ -37,12 +59,6 @@ const typeDefs = `
     addGame(
       title: String!
     ): Game
-    updateUser(
-        firstName: String
-        lastName: String
-        email: String
-        password: String
-      ): User
 
     postReview(author: String!, content: String!): Review
 
