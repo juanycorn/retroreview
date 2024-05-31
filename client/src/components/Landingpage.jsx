@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Header, Container } from 'semantic-ui-react';
+import { Header, Container, Image } from 'semantic-ui-react';
 import axios from 'axios';
 import GameCarousel from './GameCarousel';
 import './LandingPage.css';
@@ -31,7 +31,7 @@ const LandingPage = () => {
     <div className="landing-page">
       <Container className="welcome-container">
         <Header as="h1" textAlign="center" className="welcome-header">
-          Welcome to Retrocade
+          Welcome to <Image src="/assets/retrocade.png" alt="Retrocade Logo" size="Large" />
         </Header>
       </Container>
       <Container className="carousel-container">
