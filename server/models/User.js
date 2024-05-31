@@ -19,7 +19,7 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
-  reviews: [review.schema]
+  reviews: [{ type: Schema.Types.ObjectId, ref: 'Review' }]
 },
 {
     toJSON: {

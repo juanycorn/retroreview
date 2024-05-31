@@ -1,35 +1,35 @@
 
-const {Review, User} = require('../models');
+const {Review, User, Game} = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
-
+const axios = require('axios');
 const resolvers = {
     Query: {
         // find User req context
         user: async (parent, args, context) => {
             if (context.user) {
               const user = await User.findById(context.user.id).populate({
-                path: 'orders.products',
-                populate: 'category',
+                path: 'reviews',
+                populate: 'review',
               });
-      
-              user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
       
               return user;
             }
             throw AuthenticationError;
         },
-        // findbyPk the save 
-    //     save: async (parent, { id }, context) => {
-    //         if (context.user) {
-    //           const save = await Save.findById(id);
-      
-    //           return save.data;
-    //         }
-      
-    //         throw AuthenticationError;
-    //       },
+            gameDetails: async (_, { slug }) => {
+              try {
+                const response = await axios.get(`https://api.rawg.io/api/games/${slug}?key=9f4cf210f2d444348491d5c9b6de68b3`);
+                return response.data;
+              } catch (error) {
+                console.error('Error fetching game details:', error);
+                throw new Error('Failed to fetch game details');
+              }
+            },
         game: async (parent, {gameId}) => {
-          return Game.findOne({ _id: gameId });
+          return Game.findById({ _id: gameId }).populate({
+            path: 'reviews',
+            populate: 'review',
+          })
         },
         games: async () => {
           return Game.find();
@@ -48,15 +48,6 @@ const resolvers = {
             return { token, user };
         },
         // updateUser reqcontext
-        updateUser: async (parent, args, context) => {
-            if (context.user) {
-              return User.findByIdAndUpdate(context.user.id, args, {
-                new: true,
-              });
-            }
-      
-            throw AuthenticationError;
-          },
         postReview: async (parent, {content, gameId}, context) => {
           if (context.user) {
           const review = await Review.create({author: context.user.username, content})
