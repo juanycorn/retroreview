@@ -1,6 +1,6 @@
-import React from 'react';
+//import React from 'react'; imported but not used
 import { Container, Segment, List } from 'semantic-ui-react';
-import '../styles/Footer';
+import '../styles/Footer.css';
 
 const Footer = () => {
   return (

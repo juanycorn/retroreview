@@ -1,4 +1,4 @@
-import React from 'react';
+//import React from 'react'; imported but not used
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import ApolloProviderWrapper from './apollo';
 import About from './components/About';
@@ -14,7 +14,7 @@ import GameCarousel from './components/GameCarousel';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './index.css';
-import './styles/Header.css';
+//import './styles/Header.css'; we do not have a header.css
 import './styles/Footer.css';
 
 const App = () => (
