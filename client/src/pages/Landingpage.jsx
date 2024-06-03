@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Header, Container, Image } from 'semantic-ui-react';
 import axios from 'axios';
-import GameCarousel from './GameCarousel';
+import GameCarousel from '../components/GameCarousel';
 import '../styles/LandingPage.css';
 
 const LandingPage = () => {
