@@ -1,4 +1,4 @@
-import React from 'react';
+//import React from 'react'; imported but not used
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
 

@@ -1,8 +1,9 @@
-import React from 'react';
+//import React from 'react'; imported but not used
 import Slider from 'react-slick';
 import { Link } from 'react-router-dom';
 import '../styles/GameCarousel.css';
 
+//games missing in props validation
 const GameCarousel = ({ games }) => {
   const settings = {
     dots: true,
@@ -16,6 +17,7 @@ const GameCarousel = ({ games }) => {
   };
 
   return (
+    //games.map missing in props validation
     <Slider {...settings} className="carousel-container">
       {games.map(game => (
         <div key={game.id} className="carousel-item">

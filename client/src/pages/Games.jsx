@@ -13,7 +13,7 @@ const Games = () => {
     setLoading(true);
     try {
       const response = await axios.get(
-        `https://api.rawg.io/api/games?key=9f4cf210f2d444348491d5c9b6de68b3&page_size=40&page=${page}&search=${search}`
+        `https://api.rawg.io/api/games?key=${process.env.RAWG_API_KEY}&page_size=40&page=${page}&search=${search}`
       );
       setGames((prevGames) => [...prevGames, ...response.data.results]);
     } catch (error) {
