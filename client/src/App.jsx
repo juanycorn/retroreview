@@ -14,8 +14,8 @@ import GameCarousel from './components/GameCarousel';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './index.css';
-import './components/Header.css';
-import './components/Footer.css';
+import './styles/Header.css';
+import './styles/Footer.css';
 
 const App = () => (
   <ApolloProviderWrapper>

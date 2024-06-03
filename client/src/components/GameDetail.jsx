@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
+import {QUERY_DETAILS} from '../utils/queries'
+import {useQuery} from '@apollo/client'
 import { Container, Header, Segment, Image, Form, Button, Comment } from 'semantic-ui-react';
 
 const GameDetail = () => {
@@ -10,11 +11,12 @@ const GameDetail = () => {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
+    const [queryDetails, { error }] = useQuery(QUERY_DETAILS);
     const fetchGameDetails = async () => {
       try {
-        const response = await axios.get(
-          `https://api.rawg.io/api/games/${slug}?key=9f4cf210f2d444348491d5c9b6de68b3`
-        );
+        const response = await queryDetails({
+          variables: { slug: slug}
+        });
         setGame(response.data);
       } catch (error) {
         console.error('Error fetching game details:', error);

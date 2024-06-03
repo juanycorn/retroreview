@@ -4,26 +4,16 @@
   "private": true,
   "dependencies": {
     "@apollo/client": "^3.10.4",
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
     "axios": "^1.7.2",
-    "core-js": "^3.37.1",
     "customize-cra": "^1.0.0",
-    "emulatorjs": "^0.0.4",
-    "graphql": "^16.8.1",
-    "mkdirp": "^3.0.1",
     "react": "^18.3.1",
-    "react-app-rewired": "^2.2.1",
     "react-dom": "^18.3.1",
-    "react-emulatorjs": "^2.2.6",
     "react-router-dom": "^6.23.1",
     "react-scripts": "5.0.1",
     "react-slick": "^0.30.2",
     "semantic-ui-css": "^2.5.0",
     "semantic-ui-react": "^2.1.5",
-    "slick-carousel": "^1.8.1",
-    "web-vitals": "^2.1.4"
+    "slick-carousel": "^1.8.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -48,5 +38,15 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
+    "@vitejs/plugin-react": "^4.0.0",
+    "eslint": "^8.38.0",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.3.4",
+    "vite": "^4.4.5"
   }
 }

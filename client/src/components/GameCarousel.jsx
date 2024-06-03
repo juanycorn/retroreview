@@ -1,7 +1,7 @@
 import React from 'react';
 import Slider from 'react-slick';
 import { Link } from 'react-router-dom';
-import './GameCarousel.css';
+import '../styles/GameCarousel';
 
 const GameCarousel = ({ games }) => {
   const settings = {
