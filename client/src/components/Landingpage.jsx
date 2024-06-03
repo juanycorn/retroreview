@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Header, Container, Image } from 'semantic-ui-react';
 import axios from 'axios';
 import GameCarousel from './GameCarousel';
-import './LandingPage.css';
+import '..styles/LandingPage';
 
 const LandingPage = () => {
   const [popularGames, setPopularGames] = useState([]);

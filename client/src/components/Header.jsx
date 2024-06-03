@@ -2,6 +2,7 @@ import React from 'react';
 import { Menu, Container, Image } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
+
 const Header = () => {
   return (
     <Menu inverted className="header-menu">
