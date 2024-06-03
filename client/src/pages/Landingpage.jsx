@@ -11,7 +11,7 @@ const LandingPage = () => {
     const fetchPopularGames = async () => {
       try {
         const response = await axios.get(
-          `https://api.rawg.io/api/games?key=${process.env.RAWG_API_KEY}&page_size=5&ordering=-added`
+          `https://api.rawg.io/api/games?key=9f4cf210f2d444348491d5c9b6de68b3&page_size=5&ordering=-added`
         );
         const games = response.data.results.map(game => ({
           id: game.id,
