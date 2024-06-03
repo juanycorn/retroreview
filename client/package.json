@@ -2,18 +2,18 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "dependencies": {
-    "@apollo/client": "^3.10.4",
+    "@apollo/client": "^3.7.4",
     "axios": "^1.7.2",
-    "customize-cra": "^1.0.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-router-dom": "^6.23.1",
+    "graphql": "^16.6.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.11.2",
     "react-scripts": "5.0.1",
-    "react-slick": "^0.30.2",
+    "react-slick": "0.30.2",
     "semantic-ui-css": "^2.5.0",
-    "semantic-ui-react": "^2.1.5",
-    "slick-carousel": "^1.8.1"
+    "semantic-ui-react": "^2.1.5"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -22,24 +22,6 @@
     "eject": "react-scripts eject",
     "dev": "vite",
     "vite": "vite build"
-  },
-  "devDependencies": {
-    "@types/react": "^18.2.15",
-    "@types/react-dom": "^18.2.7",
-    "@vitejs/plugin-react": "^4.0.3",
-    "vite": "^4.4.5"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
   },
   "devDependencies": {
     "@types/react": "^18.0.28",

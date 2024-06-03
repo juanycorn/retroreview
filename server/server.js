@@ -8,7 +8,7 @@ const { typeDefs, resolvers } = require('./schemas');
 const {authMiddleware} = require('./utils/auth')
 const path = require('path');
 const app = express();
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 4001;
 
 // declare MongoDB connection
 const db = require('./config/connection');
@@ -21,7 +21,7 @@ const server = new ApolloServer({
 const startApolloServer = async () => {
   await server.start();
 
-  app.use(express.urlencoded({ extended: false }));
+  app.use(express.urlencoded({ extended: true }));
   app.use(express.json());
 
   app.use('/graphql', expressMiddleware(server, {
