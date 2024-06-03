@@ -8,7 +8,7 @@ const Header = () => {
     <Menu inverted className="header-menu">
       <Container>
         <Menu.Item as={Link} to="/" header>
-          <Image src="/assets/retrocade.png" alt="Retrocade Logo" size="medium" />
+          <Image src="/assets/Retrocade.png" alt="Retrocade Logo" size="medium" />
         </Menu.Item>
         <Menu.Item as={Link} to="/Games" name="Games" className="menu-item">
           Games

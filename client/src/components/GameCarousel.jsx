@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'; 
 import Slider from 'react-slick';
 import { Link } from 'react-router-dom';
 import '../styles/GameCarousel.css';
