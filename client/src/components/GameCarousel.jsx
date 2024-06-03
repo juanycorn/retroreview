@@ -1,9 +1,10 @@
-//import React from 'react'; imported but not used
+import PropTypes from 'prop-types';
 import Slider from 'react-slick';
 import { Link } from 'react-router-dom';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 import '../styles/GameCarousel.css';
 
-//games missing in props validation
 const GameCarousel = ({ games }) => {
   const settings = {
     dots: true,
@@ -12,12 +13,11 @@ const GameCarousel = ({ games }) => {
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 3000, // Change slide every 3 seconds
+    autoplaySpeed: 3000,
     arrows: true,
   };
 
   return (
-    //games.map missing in props validation
     <Slider {...settings} className="carousel-container">
       {games.map(game => (
         <div key={game.id} className="carousel-item">
@@ -29,6 +29,17 @@ const GameCarousel = ({ games }) => {
       ))}
     </Slider>
   );
+};
+
+GameCarousel.propTypes = {
+  games: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      slug: PropTypes.string.isRequired,
+      imageUrl: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+    })
+  ).isRequired,
 };
 
 export default GameCarousel;
