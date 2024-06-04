@@ -10,12 +10,14 @@ const GameDetail = () => {
   const [reviewText, setReviewText] = useState('');
   const [reviews, setReviews] = useState([]);
   const { data, loading, error } = useQuery(QUERY_DETAILS, { variables: { slug: slug } });
+  console.log(data);
   useEffect(() => {
 
     const fetchGameDetails = async () => {
       try {
-
-        setGame(data.data);
+        if(data) {
+          setGame(data.data);
+        }
       } catch (error) {
         console.error('Error fetching game details:', error);
       }
@@ -28,7 +30,7 @@ const GameDetail = () => {
     }
 
     fetchGameDetails();
-  }, [slug]);
+  }, [data]);
 
   const handleReviewSubmit = () => {
     const newReview = {

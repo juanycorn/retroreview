@@ -18,7 +18,9 @@ const resolvers = {
         },
             gameDetails: async (_, { slug }) => {
               try {
+                console.log(slug)
                 const response = await axios.get(`https://api.rawg.io/api/games/${slug}?key=9f4cf210f2d444348491d5c9b6de68b3`);
+                console.log(response);
                 return response.data;
               } catch (error) {
                 console.error('Error fetching game details:', error);
