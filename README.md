@@ -55,7 +55,7 @@
 
   ## Questions
 
-  If you have any questions feel free to reach out and contact us via email at: connorruthven@gmail.com, osoriooscar619@gmail.com, russellbooth121@gmail.com.
+  If you have any questions feel free to reach out and contact us via email at: connorruthven@gmail.com, osoriooscar619@gmail.com, jaunido@gmail.com, russellbooth121@gmail.com.
   Or follow our other projects on GitHub at: https://github.com/ConnorRuth, https://github.com/Osorio-333, https://github.com/juanycorn/group-project3, https://github.com/RussellBooth.
 
   ## Acknowledgments/Credits
