@@ -104,11 +104,11 @@ const GameDetail = () => {
             {reviews.map((review, index) => (
               <Comment key={index}>
                 <Comment.Content>
-                  <Comment.Author>{review.user}</Comment.Author>
-                  <Comment.Metadata>
+                  <Comment.Author style={{ color: 'white' }}>{review.user}</Comment.Author>
+                  <Comment.Metadata style={{ color: 'white' }}>
                     <div>{new Date(review.date).toLocaleDateString()}</div>
                   </Comment.Metadata>
-                  <Comment.Text>{review.text}</Comment.Text>
+                  <Comment.Text style={{ color: 'white' }}>{review.text}</Comment.Text>
                 </Comment.Content>
               </Comment>
             ))}

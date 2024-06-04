@@ -31,7 +31,7 @@ const LandingPage = () => {
     <div className="landing-page">
       <Container className="welcome-container">
         <Header as="h1" textAlign="center" className="welcome-header">
-          Welcome to <Image src="public/assets/retrocade.png" alt="Retrocade Logo" size="Large" />
+          Welcome to <Image src="/public/assets/retroreview.png" alt="Logo" style={{ width: '300px', height: 'auto' }} />
         </Header>
       </Container>
       <Container className="carousel-container">
