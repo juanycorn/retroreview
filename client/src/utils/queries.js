@@ -17,7 +17,6 @@ query GameDetails($slug: String!) {
     gameDetails(slug: $slug) {
       background_image
       description
-      description_raw
       name
       rating
       released
