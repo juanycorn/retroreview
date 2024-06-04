@@ -9,15 +9,13 @@ const GameDetail = () => {
   const [game, setGame] = useState(null);
   const [reviewText, setReviewText] = useState('');
   const [reviews, setReviews] = useState([]);
-
+  const { data, loading, error } = useQuery(QUERY_DETAILS, { variables: { slug: slug } });
   useEffect(() => {
-    const [queryDetails, { error }] = useQuery(QUERY_DETAILS);
+
     const fetchGameDetails = async () => {
       try {
-        const response = await queryDetails({
-          variables: { slug: slug}
-        });
-        setGame(response.data);
+
+        setGame(data.data);
       } catch (error) {
         console.error('Error fetching game details:', error);
       }
@@ -44,7 +42,7 @@ const GameDetail = () => {
     setReviewText('');
   };
 
-  if (!game) {
+  if (loading || !game) {
     return <p>Loading...</p>;
   }
 

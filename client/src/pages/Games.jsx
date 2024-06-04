@@ -10,6 +10,7 @@ const Games = () => {
   const [loading, setLoading] = useState(false);
 
   const fetchGames = async (search, page) => {
+
     setLoading(true);
     try {
       const response = await axios.get(
@@ -54,7 +55,7 @@ const Games = () => {
           <Grid columns={5} doubling>
             {games.map((game, index) => (
               <Grid.Column key={index}>
-                <Link to={`/games/${game.slug}`}>
+                <Link to={`/games/:${game.slug}`}>
                   <div style={{ position: 'relative' }}>
                     <img
                       src={game.background_image}
