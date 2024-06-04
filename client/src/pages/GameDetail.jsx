@@ -16,7 +16,8 @@ const GameDetail = () => {
     const fetchGameDetails = async () => {
       try {
         if(data) {
-          setGame(data.data);
+          setGame(data.gameDetails);
+
         }
       } catch (error) {
         console.error('Error fetching game details:', error);
@@ -68,7 +69,7 @@ const GameDetail = () => {
           borderRadius: '8px',
           backgroundColor: '#444',
         }}>
-          {game.description_raw.split('\n').map((paragraph, index) => (
+          {game.description.split('\n').map((paragraph, index) => (
             <p key={index}>{paragraph}</p>
           ))}
         </div>

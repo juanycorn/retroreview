@@ -14,7 +14,6 @@ const typeDefs = `
     id: ID
     name: String
     description: String
-    description_raw: String
     background_image:String
     released: String
     rating: Float
