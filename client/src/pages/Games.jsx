@@ -1,33 +1,33 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Grid, Header, Input, Segment, Button } from 'semantic-ui-react';
-import axios from 'axios';
-
+import {QUERY_SEARCH} from '../utils/queries'
+import {useQuery} from '@apollo/client'
 const Games = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [games, setGames] = useState([]);
   const [page, setPage] = useState(1);
-  const [loading, setLoading] = useState(false);
-
-  const fetchGames = async (search, page) => {
-
-    setLoading(true);
-    try {
-      const response = await axios.get(
-        `https://api.rawg.io/api/games?key=9f4cf210f2d444348491d5c9b6de68b3&page_size=40&page=${page}&search=${search}`
-      );
-      console.log(response.data);
-      setGames((prevGames) => [...prevGames, ...response.data.results]);
-    } catch (error) {
-      console.error('Error fetching games:', error);
-    }
-    setLoading(false);
-  };
-
+  const { data, loading, error, refetch } = useQuery(QUERY_SEARCH, { variables: { page: page, search: searchTerm } });
   useEffect(() => {
-    fetchGames(searchTerm, page);
+    const fetchGames = async (page, search) => {
+      try {
+         await refetch(page, search);
+      } catch (error) {
+        console.error('Error fetching games:', error);
+      }
+    };
+    fetchGames( page, searchTerm);
   }, [searchTerm, page]);
 
+  useEffect(() => {
+      try {
+        if(!loading && data){
+        setGames((prevGames) => [...prevGames, ...data.searchGames]);
+        }
+      } catch (error) {
+        console.error('Error displaying gamnes:', error);
+      }
+  },[loading, data]);
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
     setGames([]);
