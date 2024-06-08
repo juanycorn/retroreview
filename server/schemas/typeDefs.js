@@ -20,13 +20,24 @@ const typeDefs = `
     platforms: [Platforms]
     genres: [Genre]
   }
+type Coureseldata {
+  id: ID
+  name: String
+  background_image: String
+  slug: String
+}
   type Platforms {
     platform: Platform
   }
   type Platform {
     name: String
   }
-  
+  type Results {
+    id: ID
+    name: String
+    background_image: String
+    slug: String
+  }
   type Genre {
     name: String
   }
@@ -47,6 +58,8 @@ const typeDefs = `
     games: [Game]
     reviews: [Review]
     gameDetails(slug: String!): Details
+    getCouresel: [Coureseldata]
+    searchGames(page: Int, search: String): [Results]
   }
 
   type Mutation {
