@@ -68,3 +68,23 @@ query Reviews {
       content
     }
   }`
+
+export const QUERY_COURESEL = gql`
+query GetCouresel {
+  getCouresel {
+    background_image
+    id
+    name
+    slug
+  }
+}`
+
+export const QUERY_SEARCH = gql`
+query SearchGames($page: Int, $search: String) {
+  searchGames(page: $page, search: $search) {
+    id
+    background_image
+    name
+    slug
+  }
+}`

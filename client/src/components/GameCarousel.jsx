@@ -22,7 +22,7 @@ const GameCarousel = ({ games }) => {
       {games.map(game => (
         <div key={game.id} className="carousel-item">
           <Link to={`/games/${game.slug}`}>
-            <img src={game.imageUrl} alt={game.name} className="carousel-image" />
+            <img src={game.background_image} alt={game.name} className="carousel-image" />
             <h3 className="carousel-caption">{game.name}</h3>
           </Link>
         </div>

@@ -18,13 +18,31 @@ const resolvers = {
         },
             gameDetails: async (_, { slug }) => {
               try {
-                console.log(slug)
                 const response = await axios.get(`https://api.rawg.io/api/games/${slug}?key=9f4cf210f2d444348491d5c9b6de68b3`);
-                console.log(response);
                 return response.data;
               } catch (error) {
                 console.error('Error fetching game details:', error);
                 throw new Error('Failed to fetch game details');
+              }
+            },
+            getCouresel: async () => {
+              try {
+                const response = await axios.get(`https://api.rawg.io/api/games?key=9f4cf210f2d444348491d5c9b6de68b3&page_size=5&ordering=-added`);
+                return response.data.results;
+              } catch (error) {
+                console.error('Error fetching game couresel:', error);
+                throw new Error('Failed to fetch couresel details');
+              }
+            },
+            searchGames: async (_,{page, search}) => {
+              try {
+                console.log(page);
+                console.log(search);
+                const response = await axios.get(`https://api.rawg.io/api/games?key=9f4cf210f2d444348491d5c9b6de68b3&page_size=40&page=${page}&search=${search}`);
+                return response.data.results;
+              } catch (error) {
+                console.error('Error fetching games:', error);
+                throw new Error('Failed to fetch search Games');
               }
             },
         game: async (parent, {gameId}) => {
