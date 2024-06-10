@@ -1,9 +1,12 @@
 import React from 'react';
 import { Menu, Container, Image } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
-
-
+import AuthService from '../utils/auth'
+const handleLogout = () => {
+  AuthService.logout();
+};
 const Header = () => {
+  const isLoggedIn = AuthService.loggedIn();
   return (
     <Menu inverted className="header-menu">
       <Container>
@@ -19,9 +22,16 @@ const Header = () => {
         <Menu.Item as={Link} to="/contact" name="Contact" className="menu-item">
           Contact
         </Menu.Item>
+       { !isLoggedIn && (
         <Menu.Item as={Link} to="/login" name="Login" className="menu-item">
           Login
         </Menu.Item>
+)}
+       { isLoggedIn && (
+        <Menu.Item onClick={handleLogout} name="Logout" className="menu-item">
+          Logout
+        </Menu.Item>
+)}
       </Container>
     </Menu>
   );

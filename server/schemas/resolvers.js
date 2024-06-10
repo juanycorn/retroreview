@@ -36,8 +36,6 @@ const resolvers = {
             },
             searchGames: async (_,{page, search}) => {
               try {
-                console.log(page);
-                console.log(search);
                 const response = await axios.get(`https://api.rawg.io/api/games?key=9f4cf210f2d444348491d5c9b6de68b3&page_size=40&page=${page}&search=${search}`);
                 return response.data.results;
               } catch (error) {
@@ -62,9 +60,10 @@ const resolvers = {
     Mutation: {
         // create User returns a token
         addUser: async (parent, args) => {
+          console.log("user creation request recieved");
             const user = await User.create(args);
             const token = signToken(user);
-      
+            console.log("user creation request accepeted");
             return { token, user };
         },
         // updateUser reqcontext
@@ -90,20 +89,20 @@ const resolvers = {
       },
         //login returns a token
         login: async (parent, { email, password }) => {
+          console.log("user login request recieved");
+
             const user = await User.findOne({ email });
       
             if (!user) {
               throw AuthenticationError;
             }
-      
             const correctPw = await user.isCorrectPassword(password);
-      
+
             if (!correctPw) {
               throw AuthenticationError;
             }
-      
             const token = signToken(user);
-      
+            console.log("user login request accepted");
             return { token, user };
           },
     }
