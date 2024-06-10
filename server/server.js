@@ -8,7 +8,7 @@ const { typeDefs, resolvers } = require('./schemas');
 const {authMiddleware} = require('./utils/auth')
 const path = require('path');
 const app = express();
-const PORT = process.env.PORT || 4001;
+const PORT = process.env.PORT || 8000;
 
 // declare MongoDB connection
 const db = require('./config/connection');
