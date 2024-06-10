@@ -1,13 +1,19 @@
 import React, { useState, useRef, forwardRef, useImperativeHandle } from 'react';
+import { useMutation } from '@apollo/client';
+import { LOGIN } from '../utils/mutations';
+
+import Auth from '../utils/auth';
 
 const Login = forwardRef((props, ref) => {
-  const emailInputRef = useRef(null);
-  const passwordInputRef = useRef(null);
-
   const [formData, setFormData] = useState({
     email: '',
     password: ''
   });
+  const [login, { error, data}] = useMutation(LOGIN);
+
+  const emailInputRef = useRef(null);
+  const passwordInputRef = useRef(null);
+
   const [errors, setErrors] = useState({});
   const [formSubmitted, setFormSubmitted] = useState(false);
 
@@ -16,9 +22,19 @@ const Login = forwardRef((props, ref) => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(formData);
     const newErrors = {};
+  
+    try {
+      const { data } = await login({
+        variables: { ...formData },
+      });
+      Auth.login(data.login.token);
+    } catch (e) {
+      console.error(e);
+    }
 
     if (!formData.email) {
       newErrors.email = 'Please enter your email address.';

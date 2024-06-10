@@ -31,7 +31,7 @@ mutation Mutation($title: String!) {
     addGame(title: $title) {
       title
     }
-  }`
+  }`;
 
 export const ADD_REVIEW = gql`
 mutation Mutation($author: String!, $content: String!) {
@@ -41,5 +41,5 @@ mutation Mutation($author: String!, $content: String!) {
       author
       content
     }
-  }`
+  }`;
 
