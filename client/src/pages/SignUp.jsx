@@ -1,12 +1,17 @@
 import React, { useState, useRef, forwardRef, useImperativeHandle } from 'react';
+import { useMutation } from '@apollo/client';
+import { ADD_USER } from '../utils/mutations';
+
+import Auth from '../utils/auth';
 
 const Signup = forwardRef((props, ref) => {
   const usernameInputRef = useRef(null);
   const emailInputRef = useRef(null);
   const passwordInputRef = useRef(null);
+  const [addUser, { error, data }] = useMutation(ADD_USER);
 
   const [formData, setFormData] = useState({
-    username: '',
+    userName: '',
     email: '',
     password: ''
   });
@@ -18,12 +23,23 @@ const Signup = forwardRef((props, ref) => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(formData);
     const newErrors = {};
 
-    if (!formData.username) {
-      newErrors.username = 'Please enter your username.';
+    try {
+      const { data } = await addUser ({
+        variables: { ...formData },
+      });
+
+      Auth.login(data.addUser.token);
+    } catch (e) {
+      console.error(e);
+    }
+
+    if (!formData.userName) {
+      newErrors.userName = 'Please enter your username.';
       usernameInputRef.current.focus();
     }
 
@@ -67,15 +83,15 @@ const Signup = forwardRef((props, ref) => {
             <input
               type="text"
               placeholder="Username"
-              name="username"
-              value={formData.username}
+              name="userName"
+              value={formData.userName}
               onChange={handleChange}
               ref={usernameInputRef}
-              autoComplete="username"
+              autoComplete="userName"
               style={{ width: '100%', padding: '10px' }}
             />
             <i className="user icon"></i>
-            {errors.username && <div style={{ color: 'red', marginBottom: '10px' }}>{errors.username}</div>}
+            {errors.userName && <div style={{ color: 'red', marginBottom: '10px' }}>{errors.username}</div>}
           </div>
           <div className="ui icon input" style={{ marginBottom: '10px', width: '100%' }}>
             <input

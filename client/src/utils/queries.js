@@ -10,7 +10,7 @@ query User {
         content
       }
     }
-  }`
+  }`;
 
 export const QUERY_DETAILS = gql`
 query GameDetails($slug: String!) {
@@ -29,7 +29,7 @@ query GameDetails($slug: String!) {
         name
       }
     }
-  }`
+  }`;
 
   export const QUERY_GAME = gql`
   query Game {
@@ -43,7 +43,7 @@ query GameDetails($slug: String!) {
         content
       }
     }
-  }`
+  }`;
 
 export const QUERY_GAMES = gql`
 query Games {
@@ -57,7 +57,7 @@ query Games {
         content
       }
     }
-  }`
+  }`;
 
 export const QUERY_REVIEWS = gql`
 query Reviews {
@@ -67,7 +67,7 @@ query Reviews {
       author
       content
     }
-  }`
+  }`;
 
 export const QUERY_COURESEL = gql`
 query GetCouresel {
@@ -77,7 +77,7 @@ query GetCouresel {
     name
     slug
   }
-}`
+}`;
 
 export const QUERY_SEARCH = gql`
 query SearchGames($page: Int, $search: String) {
@@ -87,4 +87,4 @@ query SearchGames($page: Int, $search: String) {
     name
     slug
   }
-}`
+}`;
