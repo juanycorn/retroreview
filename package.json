@@ -11,7 +11,7 @@
     "develop": "concurrently \"cd server && npm run start\" \"cd client && npm run dev\"",
     "install": "cd server && npm i && cd ../client && npm i",
     "start": "node server --ignore client",
-    "build": "cd client && npm run"
+    "build": "cd client && npm run vite"
   },
   "keywords": [],
   "author": "",
