@@ -5,7 +5,7 @@
 .welcome-container {
   padding: 100px;
   text-align: center;
-  background-image: url('/public/assets/welcome-background.webp');
+  background-image: url('/assets/welcome-background.webp');
   background-size: cover;
   color: white;
   border-radius: 20px;
